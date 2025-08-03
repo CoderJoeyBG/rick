@@ -2,590 +2,71 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <title>Rick</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🎭 ULTIMATE RICKROLL EXPERIENCE 🎭</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Creepster&display=swap');
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
     html, body {
-      height: 100vh;
-      overflow: hidden;
-      background: #000;
-      font-family: 'Orbitron', monospace;
-      cursor: none;
-    }
-    
-    /* Animated Background */
-    .bg-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
+      margin: 0;
       height: 100%;
-      z-index: -2;
-      background: linear-gradient(45deg, #ff0080, #8000ff, #0080ff, #00ff80, #ff8000);
-      background-size: 400% 400%;
-      animation: gradientShift 3s ease infinite;
-    }
-    
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    
-    /* Matrix Rain Effect */
-    .matrix-rain {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      pointer-events: none;
-    }
-    
-    .matrix-column {
-      position: absolute;
-      top: -100px;
-      font-family: 'Courier New', monospace;
-      font-size: 14px;
-      color: #00ff41;
-      text-shadow: 0 0 10px #00ff41;
-      animation: matrixFall linear infinite;
-      opacity: 0.7;
-    }
-    
-    @keyframes matrixFall {
-      to { transform: translateY(calc(100vh + 100px)); }
-    }
-    
-    /* Floating Elements */
-    .floating-elements {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 1;
-    }
-    
-    .floating-emoji {
-      position: absolute;
-      font-size: 2rem;
-      animation: float 6s ease-in-out infinite;
-      opacity: 0.8;
-    }
-    
-    @keyframes float {
-      0%, 100% { transform: translateY(0px) rotate(0deg); }
-      25% { transform: translateY(-20px) rotate(90deg); }
-      50% { transform: translateY(-40px) rotate(180deg); }
-      75% { transform: translateY(-20px) rotate(270deg); }
-    }
-    
-    /* Main Container */
-    .main-container {
-      position: relative;
-      z-index: 2;
-      height: 100vh;
+      background: linear-gradient(270deg, #000000, #1a001a, #330033, #1a001a, #000000);
+      background-size: 1000% 1000%;
+      animation: backgroundShift 20s linear infinite;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      gap: 30px;
-      padding: 20px;
-    }
-    
-    /* Glitch Title */
-    .glitch-title {
-      font-family: 'Creepster', cursive;
-      font-size: clamp(2rem, 8vw, 6rem);
-      font-weight: 900;
-      text-align: center;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
       color: #fff;
-      text-shadow: 
-        0 0 10px #ff0080,
-        0 0 20px #ff0080,
-        0 0 40px #ff0080;
-      animation: glitch 2s infinite;
-      user-select: none;
-      text-transform: uppercase;
-      letter-spacing: 5px;
-      margin-bottom: 20px;
-    }
-    
-    @keyframes glitch {
-      0% { transform: translate(0); }
-      20% { transform: translate(-2px, 2px); }
-      40% { transform: translate(-2px, -2px); }
-      60% { transform: translate(2px, 2px); }
-      80% { transform: translate(2px, -2px); }
-      100% { transform: translate(0); }
-    }
-    
-    /* Video Container */
-    .video-container {
-      position: relative;
-      width: min(90vw, 800px);
-      height: min(70vh, 450px);
-      border-radius: 20px;
       overflow: hidden;
-      box-shadow: 
-        0 0 50px rgba(255, 0, 128, 0.8),
-        0 0 100px rgba(128, 0, 255, 0.6),
-        inset 0 0 30px rgba(255, 255, 255, 0.1);
-      animation: videoGlow 3s ease-in-out infinite alternate;
-      transform-style: preserve-3d;
-      perspective: 1000px;
     }
-    
-    @keyframes videoGlow {
-      0% { 
-        box-shadow: 
-          0 0 50px rgba(255, 0, 128, 0.8),
-          0 0 100px rgba(128, 0, 255, 0.6),
-          inset 0 0 30px rgba(255, 255, 255, 0.1);
-        transform: rotateX(0deg) rotateY(0deg);
-      }
-      50% {
-        transform: rotateX(2deg) rotateY(2deg);
-      }
-      100% { 
-        box-shadow: 
-          0 0 80px rgba(0, 255, 128, 0.8),
-          0 0 150px rgba(255, 128, 0, 0.6),
-          inset 0 0 50px rgba(255, 255, 255, 0.2);
-        transform: rotateX(-2deg) rotateY(-2deg);
-      }
-    }
-    
-    .video-container::before {
-      content: '';
-      position: absolute;
-      top: -2px;
-      left: -2px;
-      right: -2px;
-      bottom: -2px;
-      background: linear-gradient(45deg, #ff0080, #8000ff, #0080ff, #00ff80, #ff8000, #ff0080);
-      background-size: 300% 300%;
-      border-radius: 22px;
-      z-index: -1;
-      animation: borderGlow 2s linear infinite;
-    }
-    
-    @keyframes borderGlow {
+
+    @keyframes backgroundShift {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
-    
+
     iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      border-radius: 18px;
-      background: #000;
+      width: 90vw;
+      max-width: 1280px;
+      height: 60vh;
+      border: 10px solid;
+      border-image-slice: 1;
+      border-image-source: linear-gradient(135deg, 
+        #ff0000, #ff9900, #ffff00, 
+        #00ff00, #00ffff, #0000ff, #ff00ff, #ff0000);
+      border-radius: 20px;
+      box-shadow: 0 0 30px #ff00ff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background-color: black;
     }
-    
-    /* Caption */
+
+    iframe:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 50px #00ffff;
+    }
+
     .caption {
-      font-family: 'Orbitron', monospace;
-      font-size: clamp(1.2rem, 4vw, 2.5rem);
-      font-weight: 700;
+      margin-top: 20px;
+      font-size: 2.2rem;
       text-align: center;
-      color: #fff;
-      text-shadow: 
-        0 0 10px #00ffff,
-        0 0 20px #00ffff,
-        0 0 40px #00ffff;
-      animation: textPulse 2s ease-in-out infinite alternate;
-      user-select: none;
-      letter-spacing: 3px;
-      text-transform: uppercase;
+      text-shadow: 0 0 10px #ff00ff;
+      animation: neonPulse 1.5s ease-in-out infinite alternate;
     }
-    
-    @keyframes textPulse {
-      0% { 
-        color: #ff0080;
-        text-shadow: 
-          0 0 10px #ff0080,
-          0 0 20px #ff0080,
-          0 0 40px #ff0080;
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.05);
-      }
-      100% { 
-        color: #00ffff;
-        text-shadow: 
-          0 0 10px #00ffff,
-          0 0 20px #00ffff,
-          0 0 40px #00ffff;
-        transform: scale(1.1);
-      }
-    }
-    
-    /* Particle System */
-    .particles {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 0;
-    }
-    
-    .particle {
-      position: absolute;
-      width: 4px;
-      height: 4px;
-      background: #fff;
-      border-radius: 50%;
-      animation: particleFloat 8s linear infinite;
-      box-shadow: 0 0 10px currentColor;
-    }
-    
-    @keyframes particleFloat {
-      0% {
-        transform: translateY(100vh) rotate(0deg);
-        opacity: 0;
-      }
-      10% {
-        opacity: 1;
-      }
-      90% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-100px) rotate(360deg);
-        opacity: 0;
-      }
-    }
-    
-    /* Custom Cursor */
-    .cursor {
-      position: fixed;
-      width: 20px;
-      height: 20px;
-      border: 2px solid #ff0080;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9999;
-      mix-blend-mode: difference;
-      animation: cursorGlow 1s ease-in-out infinite alternate;
-    }
-    
-    @keyframes cursorGlow {
-      0% { 
-        transform: scale(1);
-        border-color: #ff0080;
-        box-shadow: 0 0 10px #ff0080;
-      }
-      100% { 
-        transform: scale(1.5);
-        border-color: #00ffff;
-        box-shadow: 0 0 20px #00ffff;
-      }
-    }
-    
-    /* Warning Messages */
-    .warning {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: rgba(255, 0, 0, 0.1);
-      border: 2px solid #ff0000;
-      border-radius: 10px;
-      padding: 15px;
-      color: #ff0000;
-      font-family: 'Orbitron', monospace;
-      font-weight: 700;
-      text-shadow: 0 0 10px #ff0000;
-      animation: warningBlink 1s ease-in-out infinite alternate;
-      backdrop-filter: blur(10px);
-      z-index: 3;
-    }
-    
-    @keyframes warningBlink {
-      0% { opacity: 0.7; }
-      100% { opacity: 1; }
-    }
-    
-    /* Easter Eggs */
-    .secret-message {
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
-      font-family: 'Courier New', monospace;
-      font-size: 12px;
-      color: rgba(0, 255, 0, 0.3);
-      user-select: none;
-      z-index: 3;
-      animation: fadeInOut 5s ease-in-out infinite;
-    }
-    
-    @keyframes fadeInOut {
-      0%, 80%, 100% { opacity: 0; }
-      10%, 70% { opacity: 0.3; }
-    }
-    
-    /* Mobile Optimizations */
-    @media (max-width: 768px) {
-      .warning {
-        top: 10px;
-        right: 10px;
-        font-size: 12px;
-        padding: 10px;
-      }
-      
-      .secret-message {
-        bottom: 10px;
-        left: 10px;
-        font-size: 10px;
-      }
-      
-      .floating-emoji {
-        font-size: 1.5rem;
-      }
-    }
-    
-    /* Screen shake on load */
-    @keyframes screenShake {
-      0% { transform: translate(0); }
-      10% { transform: translate(-2px, -2px); }
-      20% { transform: translate(2px, -2px); }
-      30% { transform: translate(-2px, 2px); }
-      40% { transform: translate(2px, 2px); }
-      50% { transform: translate(-2px, -2px); }
-      60% { transform: translate(2px, -2px); }
-      70% { transform: translate(-2px, 2px); }
-      80% { transform: translate(2px, 2px); }
-      90% { transform: translate(-2px, -2px); }
-      100% { transform: translate(0); }
-    }
-    
-    .shake {
-      animation: screenShake 0.5s ease-in-out;
+
+    @keyframes neonPulse {
+      0% { color: #ff00ff; text-shadow: 0 0 10px #ff00ff; }
+      100% { color: #00ffff; text-shadow: 0 0 20px #00ffff; }
     }
   </style>
 </head>
 <body>
-  <!-- Animated Background -->
-  <div class="bg-container"></div>
-  
-  <!-- Matrix Rain -->
-  <div class="matrix-rain" id="matrixRain"></div>
-  
-  <!-- Particles -->
-  <div class="particles" id="particles"></div>
-  
-  <!-- Floating Elements -->
-  <div class="floating-elements" id="floatingElements"></div>
-  
-  <!-- Custom Cursor -->
-  <div class="cursor" id="cursor"></div>
-  
-  <!-- Main Content -->
-  <div class="main-container">
-    <h1 class="glitch-title">🎭 RICKROLL SUPREME 🎭</h1>
-    
-    <div class="video-container">
-      <iframe 
-        src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&rel=0&controls=0&showinfo=0&modestbranding=1&loop=1&playlist=dQw4w9WgXcQ" 
-        allow="autoplay; encrypted-media" 
-        allowfullscreen
-        title="The Ultimate Rick Roll Experience"
-      ></iframe>
-    </div>
-    
-    <div class="caption">
-      🚨 CONGRATULATIONS! YOU'VE BEEN RICKROLLED! 🚨<br>
-      <span style="font-size: 0.7em; opacity: 0.8;">LEVEL: LEGENDARY 💀</span>
-    </div>
-  </div>
-  
-  <!-- Warning Messages -->
-  <div class="warning">
-    ⚠️ RICKROLL DETECTED<br>
-    STATUS: ACTIVE
-  </div>
-  
-  <!-- Secret Message -->
-  <div class="secret-message">
-    never gonna give you up... never gonna let you down...
-  </div>
-
-  <script>
-    // Custom cursor tracking
-    const cursor = document.getElementById('cursor');
-    let mouseX = 0, mouseY = 0;
-    
-    document.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-    });
-    
-    function updateCursor() {
-      cursor.style.left = mouseX - 10 + 'px';
-      cursor.style.top = mouseY - 10 + 'px';
-      requestAnimationFrame(updateCursor);
-    }
-    updateCursor();
-    
-    // Matrix rain effect
-    function createMatrixRain() {
-      const matrixContainer = document.getElementById('matrixRain');
-      const chars = 'RICKROLLED01010101';
-      
-      for (let i = 0; i < 50; i++) {
-        const column = document.createElement('div');
-        column.className = 'matrix-column';
-        column.style.left = Math.random() * 100 + '%';
-        column.style.animationDuration = (Math.random() * 3 + 2) + 's';
-        column.style.animationDelay = Math.random() * 2 + 's';
-        
-        let text = '';
-        for (let j = 0; j < 20; j++) {
-          text += chars[Math.floor(Math.random() * chars.length)] + '<br>';
-        }
-        column.innerHTML = text;
-        
-        matrixContainer.appendChild(column);
-      }
-    }
-    
-    // Particle system
-    function createParticles() {
-      const particleContainer = document.getElementById('particles');
-      const colors = ['#ff0080', '#8000ff', '#0080ff', '#00ff80', '#ff8000'];
-      
-      for (let i = 0; i < 100; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'particle';
-        particle.style.left = Math.random() * 100 + '%';
-        particle.style.animationDelay = Math.random() * 8 + 's';
-        particle.style.color = colors[Math.floor(Math.random() * colors.length)];
-        particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
-        
-        particleContainer.appendChild(particle);
-      }
-    }
-    
-    // Floating emojis
-    function createFloatingEmojis() {
-      const floatingContainer = document.getElementById('floatingElements');
-      const emojis = ['🎵', '🎶', '🕺', '💃', '🎤', '🎸', '🎹', '🎺', '🥳', '😎', '🔥', '⭐', '💫', '✨'];
-      
-      for (let i = 0; i < 20; i++) {
-        const emoji = document.createElement('div');
-        emoji.className = 'floating-emoji';
-        emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-        emoji.style.left = Math.random() * 100 + '%';
-        emoji.style.top = Math.random() * 100 + '%';
-        emoji.style.animationDelay = Math.random() * 6 + 's';
-        emoji.style.animationDuration = (Math.random() * 3 + 3) + 's';
-        
-        floatingContainer.appendChild(emoji);
-      }
-    }
-    
-    // Screen shake on load
-    function screenShake() {
-      document.body.classList.add('shake');
-      setTimeout(() => {
-        document.body.classList.remove('shake');
-      }, 500);
-    }
-    
-    // Initialize effects
-    document.addEventListener('DOMContentLoaded', () => {
-      createMatrixRain();
-      createParticles();
-      createFloatingEmojis();
-      screenShake();
-      
-      // Add click effects
-      document.addEventListener('click', (e) => {
-        const colors = ['#ff0080', '#8000ff', '#0080ff', '#00ff80', '#ff8000'];
-        for (let i = 0; i < 10; i++) {
-          const spark = document.createElement('div');
-          spark.style.position = 'fixed';
-          spark.style.left = e.clientX + 'px';
-          spark.style.top = e.clientY + 'px';
-          spark.style.width = '4px';
-          spark.style.height = '4px';
-          spark.style.background = colors[Math.floor(Math.random() * colors.length)];
-          spark.style.borderRadius = '50%';
-          spark.style.pointerEvents = 'none';
-          spark.style.zIndex = '9999';
-          spark.style.boxShadow = '0 0 10px currentColor';
-          
-          const angle = (Math.PI * 2 * i) / 10;
-          const velocity = 100;
-          const vx = Math.cos(angle) * velocity;
-          const vy = Math.sin(angle) * velocity;
-          
-          let x = e.clientX;
-          let y = e.clientY;
-          let opacity = 1;
-          
-          function animateSpark() {
-            x += vx * 0.02;
-            y += vy * 0.02;
-            opacity *= 0.95;
-            
-            spark.style.left = x + 'px';
-            spark.style.top = y + 'px';
-            spark.style.opacity = opacity;
-            
-            if (opacity > 0.01) {
-              requestAnimationFrame(animateSpark);
-            } else {
-              document.body.removeChild(spark);
-            }
-          }
-          
-          document.body.appendChild(spark);
-          animateSpark();
-        }
-      });
-      
-      // Konami code easter egg
-      let konamiCode = [];
-      const konamiSequence = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]; // ↑↑↓↓←→←→BA
-      
-      document.addEventListener('keydown', (e) => {
-        konamiCode.push(e.keyCode);
-        if (konamiCode.length > konamiSequence.length) {
-          konamiCode.shift();
-        }
-        
-        if (JSON.stringify(konamiCode) === JSON.stringify(konamiSequence)) {
-          // Ultra mode activation
-          document.body.style.filter = 'hue-rotate(180deg) saturate(200%)';
-          document.querySelector('.glitch-title').textContent = '🌈 ULTRA RICKROLL ACTIVATED! 🌈';
-          screenShake();
-        }
-      });
-    });
-    
-    // Prevent context menu
-    document.addEventListener('contextmenu', (e) => e.preventDefault());
-    
-    // Add some console easter eggs
-    console.log('%cYou\'ve been RICKROLLED! 🎵', 'color: #ff0080; font-size: 20px; font-weight: bold;');
-    console.log('%cNever gonna give you up, never gonna let you down! 🕺', 'color: #00ffff; font-size: 16px;');
-    console.log('%cTry the Konami code: ↑↑↓↓←→←→BA', 'color: #00ff00; font-size: 14px;');
-  </script>
+  <iframe 
+    src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&rel=0&controls=0&showinfo=0&modestbranding=1&mute=1"
+    title="Rickroll Video"
+    allow="autoplay; encrypted-media"
+    allowfullscreen
+  ></iframe>
+  <div class="caption">You've been Rickrolled! 🎉💀</div>
 </body>
 </html>
