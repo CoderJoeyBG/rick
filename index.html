@@ -2,71 +2,59 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Rick</title>
+  <title>Ultimate Rickroll</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     html, body {
       margin: 0;
       height: 100%;
-      background: linear-gradient(270deg, #000000, #1a001a, #330033, #1a001a, #000000);
-      background-size: 1000% 1000%;
-      animation: backgroundShift 20s linear infinite;
+      background: black;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      font-family: 'Comic Sans MS', cursive, sans-serif;
-      color: #fff;
+      color: white;
+      font-family: sans-serif;
       overflow: hidden;
+      cursor: pointer;
     }
-
-    @keyframes backgroundShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
     iframe {
       width: 90vw;
-      max-width: 1280px;
       height: 60vh;
-      border: 10px solid;
-      border-image-slice: 1;
-      border-image-source: linear-gradient(135deg, 
-        #ff0000, #ff9900, #ffff00, 
-        #00ff00, #00ffff, #0000ff, #ff00ff, #ff0000);
-      border-radius: 20px;
-      box-shadow: 0 0 30px #ff00ff;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      background-color: black;
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #ff00ff;
     }
-
-    iframe:hover {
-      transform: scale(1.03);
-      box-shadow: 0 0 50px #00ffff;
-    }
-
     .caption {
-      margin-top: 20px;
-      font-size: 2.2rem;
-      text-align: center;
-      text-shadow: 0 0 10px #ff00ff;
-      animation: neonPulse 1.5s ease-in-out infinite alternate;
+      margin-top: 10px;
+      font-size: 2rem;
+      animation: pulse 1.5s infinite alternate;
     }
-
-    @keyframes neonPulse {
-      0% { color: #ff00ff; text-shadow: 0 0 10px #ff00ff; }
-      100% { color: #00ffff; text-shadow: 0 0 20px #00ffff; }
+    @keyframes pulse {
+      from { color: #ff00ff; }
+      to { color: #00ffff; }
     }
   </style>
 </head>
-<body>
+<body onclick="enableSound()">
   <iframe 
-    src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&rel=0&controls=0&showinfo=0&modestbranding=1&mute=1"
-    title="Rickroll Video"
+    id="rickIframe"
+    src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&enablejsapi=1&controls=0"
     allow="autoplay; encrypted-media"
     allowfullscreen
   ></iframe>
-  <div class="caption">You've been Rickrolled! 🎉💀</div>
+  <div class="caption">Click anywhere for full Rickroll effect 🔊</div>
+
+  <script>
+    function enableSound() {
+      const iframe = document.getElementById("rickIframe");
+      iframe.contentWindow.postMessage('{"event":"command","func":"unMute","args":""}', '*');
+    }
+
+    // Required for JS API to work:
+    const tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    document.body.appendChild(tag);
+  </script>
 </body>
 </html>
